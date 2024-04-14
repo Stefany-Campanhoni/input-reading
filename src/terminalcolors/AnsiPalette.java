@@ -17,7 +17,7 @@ public enum AnsiPalette {
         this.colorName = colorName;
     }
 
-    public String getColorName() {
+    protected String getColorName() {
         return this.colorName;
     }
 }

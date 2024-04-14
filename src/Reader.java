@@ -3,24 +3,31 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.function.Supplier;
 
-public class Read {
+import terminalcolors.AnsiPalette;
+import terminalcolors.AnsiWriter;
+
+public class Reader {
     private static Scanner scanner = new Scanner(System.in);
 
     private static <T> T readInput(Supplier<T> reader, String errorMessage) {
         try {
             return reader.get();
         } catch (InputMismatchException err) {
-            System.err.println(errorMessage);
+            AnsiWriter.printError(err);
+
             System.out.print("Type enter to continue...");
             scanner.next(); // discard invalid input
+
             return readInput(reader, errorMessage);
         } catch (NoSuchElementException err) {
-            System.out.println("Goodbye, be careful! c:");
+            AnsiWriter.printWithColor(AnsiPalette.CYAN, "Goodbye, be careful! c:");
             System.exit(0);
+
             return null; // unreachable, but required for compilation
         } catch (Exception err) {
-            System.err.println("An unexpected error occurred: " + err.getMessage());
+            AnsiWriter.printError(err);
             System.exit(1);
+
             return null; // unreachable, but required for compilation
         }
     }
