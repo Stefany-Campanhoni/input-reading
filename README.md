@@ -1,18 +1,58 @@
-## Getting Started
+# Reader Class - User Input Simplified 🎉
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+The `Reader` class is a utility class designed to simplify the process of getting user input in Java applications. It uses a `Scanner` object to read input and handles `InputMismatchException` and `NoSuchElementException` errors gracefully.
 
-## Folder Structure
+## How to Use 🚀
 
-The workspace contains two folders by default, where:
+The `Reader` class provides several methods to read different types of input from the user:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- `readString()`: Reads a `String` from the user.
+- `readChar()`: Reads a `char` from the user.
+- `readInt()`: Reads an `int` from the user.
+- `readLong()`: Reads a `long` from the user.
+- `readDouble()`: Reads a `double` from the user.
+- `readFloat()`: Reads a `float` from the user.
+- `readByte()`: Reads a `byte` from the user.
+- `readShort()`: Reads a `short` from the user.
+- `readBoolean()`: Reads a `boolean` from the user.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+Here's an example of how to use the `Reader` class to read an integer from the user:
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+```java
+int number = Reader.readInt();
+```
 
-## Dependency Management
+In this example, if the user enters something that's not an integer, the `Reader` class will print an error message and prompt the user for input again.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+## Integration with IntelliJ and VSCode 🛠️
+
+To use the `Reader` class in your IntelliJ or VSCode project, you need to include the `Reader` class's JAR file in your project's classpath.
+
+### IntelliJ
+
+1. Go to `File > Project Structure > Modules`.
+2. Click on the `Dependencies` tab.
+3. Click on the `+` button and select `JARs or directories`.
+4. Navigate to the location of the `Reader` class's JAR file, select it, and click `OK`.
+5. Click `Apply` and then `OK`.
+
+### VSCode
+
+1. Copy the `Reader` class's JAR file to a `lib` directory in your project.
+2. Update your `.vscode/settings.json` file to include the `lib` directory in your project's classpath. The `java.project.referencedLibraries` setting should include `"lib/**/*.jar"`.
+
+Your `.vscode/settings.json` file should look something like this:
+
+```json
+{
+    "java.project.sourcePaths": ["src"],
+    "java.project.outputPath": "bin",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar"
+    ]
+}
+```
+
+3. Restart VSCode to ensure the new settings take effect.
+
+Now, you should be able to use the `Reader` class in your project. Enjoy coding! 🎈🎈🎈
