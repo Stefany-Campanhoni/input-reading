@@ -13,19 +13,21 @@ public class Reader {
         try {
             return reader.get();
         } catch (InputMismatchException err) {
-            AnsiWriter.printError(err);
+            AnsiWriter.printError(errorMessage);
 
-            System.out.print("Type enter to continue...");
-            scanner.next(); // discard invalid input
+            scanner.nextLine(); // clear the buffer
 
             return readInput(reader, errorMessage);
         } catch (NoSuchElementException err) {
             AnsiWriter.printWithColor(AnsiPalette.CYAN, "Goodbye, be careful! c:");
+
             System.exit(0);
 
             return null; // unreachable, but required for compilation
         } catch (Exception err) {
-            AnsiWriter.printError(err);
+            AnsiWriter.printError(err.getMessage());
+            err.printStackTrace();
+
             System.exit(1);
 
             return null; // unreachable, but required for compilation
@@ -53,11 +55,19 @@ public class Reader {
         return readInput(scanner::nextFloat, "\n!!!- Type a number -!!!\n");
     }
 
+    public static double readDouble() {
+        return readInput(scanner::nextDouble, "\n!!!- Type a number -!!!\n");
+    }
+
     public static char readChar() {
-        return readInput(() -> scanner.next().charAt(0), "\n!!!- Type a character -!!!\n");
+        return readInput(() -> scanner.nextLine().charAt(0), "\n!!!- Type a character -!!!\n");
     }
 
     public static String readString() {
         return readInput(scanner::nextLine, "\n!!!- Type a string -!!!\n");
+    }
+
+    public static boolean readBoolean() {
+        return readInput(scanner::nextBoolean, "\n!!!- Type a boolean value -!!!\n");
     }
 }

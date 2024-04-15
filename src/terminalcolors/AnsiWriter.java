@@ -1,11 +1,15 @@
 package terminalcolors;
 
 public class AnsiWriter {
-    public static <T> void printWithColor(AnsiPalette color, T text) {
-        System.out.println(color.getColorName() + text + AnsiPalette.RESET);
+    public static <T> void printWithColor(AnsiPalette color, T output) {
+        printColor(color);
+
+        System.out.println(output);
+
+        printColor(AnsiPalette.RESET);
     }
 
-    public static void printWithColor(AnsiPalette color) {
+    public static void printColor(AnsiPalette color) {
         System.out.print(color.getColorName());
     }
 
@@ -17,11 +21,11 @@ public class AnsiWriter {
         }
     }
 
-    public static void printError(Exception err) {
-        printWithColor(AnsiPalette.RED);
+    public static void printError(String err) {
+        printColor(AnsiPalette.RED);
 
-        System.err.println(err.getMessage());
+        System.err.println(err);
 
-        printWithColor(AnsiPalette.RESET);
+        printColor(AnsiPalette.RESET);
     }
 }
